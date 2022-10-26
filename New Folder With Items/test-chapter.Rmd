@@ -1,0 +1,16 @@
+# same as md
+
+### title 
+
+
+only difference is 
+
+```{cpp}
+include <stdio.h>
+
+int main() {
+  return 0;
+}
+```
+
+s
