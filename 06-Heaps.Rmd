@@ -1,5 +1,5 @@
 ---
-title: Trees
+title: Heaps
 category: Data Structures
 description:
   A heapful of data which is quick  to insert to and gives the most important item quickly.
@@ -94,3 +94,6 @@ authors: Harsh Deep, Eddie Huang
 * reference lecture closely 
 
 -->
+
+
+

@@ -1,5 +1,0 @@
-# C++ Review
-```cpp
-std::cout<< "hello harsh" <<std::endl;
-```
-

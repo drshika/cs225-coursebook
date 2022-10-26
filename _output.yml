@@ -5,4 +5,4 @@ bookdown::gitbook:
       before: |
         <li><a href="./">CSS225 Coursebook</a></li>
       after: |
-        <li><a href="https://courses.engr.illinois.edu/cs225/fa2022/" target="blank">CS225 Course Webpage</a></li>
+        <li><a href="https://courses.engr.illinois.edu/cs225/sp2022/" target="blank">CS225 Course Webpage</a></li>

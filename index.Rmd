@@ -17,3 +17,7 @@ output:
 
 # Data Structures in C++
 
+*hugs* 
+
+Welcome to the Course Staff produced coursebook to pair with CS 225! We hope this really helps you learn more and improves your code. Report any issues at our Github repo and we'll be sure to credit you as well :)
+

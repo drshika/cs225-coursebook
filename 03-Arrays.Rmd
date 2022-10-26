@@ -1,0 +1,8 @@
+---
+title: Arrays and Lists
+category: Data Structures
+description:
+    ""
+authors: Tamara Nelson-Fromm, Wenjie Zhu, Nathan Walters, Drshika Asher
+---
+# Arrays and Lists

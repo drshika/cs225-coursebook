@@ -5,11 +5,7 @@ description:
     A two-child tree that can be searched by moving left or right.
 authors: Tamara Nelson-Fromm, Wenjie Zhu, Nathan Walters, Drshika Asher
 ---
-
 # Trees
-You're either a botanist or computer scientist if you can talk about trees beyond the #savethetrees kind of narrative. Unlike trees in real life, Trees in computer science have a root node at the "top". So far we've talked about **linear** data structures. Linear data structures are ordered, meaning that there is a sequence with which our data is ordered and traversed. Trees are a **non-linear** data structure, meaning that the data isn't organized in a sequential manner. This means that you can visit all the elements on a tree in many different ways based on what type of problem you are trying to solve. For problems where we want to optimize for a certain outcome and don't care about order as much, trees are perfect. 
-
-If we take a very high level look at what trees and lists are composed of, it's just nodes and pointers, however, the difference with trees that they are **hierarchical** meaning that there is a top down organization. 
 Trees are a hierarchical data structure with a certain set of properties that distinguish it from graphs. Trees are rooted, which means that there is a pointer to the root node and each child node can be reached via the root. 
 
 <!-- not sure how much detail we want here -->
@@ -123,3 +119,4 @@ void BinaryTree<T>::inOrder(TreeNode * cur) {
 
 ## Delete and Insert
 <!--stopped here-->
+

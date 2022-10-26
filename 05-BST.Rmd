@@ -1,0 +1,9 @@
+---
+title: Binary Search Trees
+category: Data Structures
+description:
+    ""
+authors: Tamara Nelson-Fromm, Wenjie Zhu, Nathan Walters, Drshika Asher
+---
+# Binary Search Trees
+# AVL Trees
