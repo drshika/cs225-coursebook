@@ -1,6 +1,0 @@
-# The pool of tears
-```cpp
-std::cout<< "hello harsh" <<std::endl;
-```
-![alt text or image title](images/logo.png)
-
