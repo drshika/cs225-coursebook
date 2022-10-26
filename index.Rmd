@@ -1,0 +1,19 @@
+--- 
+title: "CS 225 Coursebook"
+author: "CS 225 Course Staff"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output:
+  bookdown::pdf_book:
+    template: tex/template.tex
+    keep_tex: yes
+    citation_package: natbib
+    toc_depth: 3
+    toc_unnumbered: no
+    toc_appendix: yes
+    pandoc_args:  --top-level-division=chapter
+    quote_footer: ["\\begin{flushright}", "\\end{flushright}"]
+---
+
+# Data Structures in C++
+

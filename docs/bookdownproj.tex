@@ -1,0 +1,345 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Trees},
+  pdfauthor={CS 225 Course Staff},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+
+\title{Trees}
+\author{CS 225 Course Staff}
+\date{2022-10-25}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{data-structures-in-c}{%
+\chapter{Data Structures in C++}\label{data-structures-in-c}}
+
+\hypertarget{the-pool-of-tears}{%
+\chapter{The pool of tears}\label{the-pool-of-tears}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{cout}\OperatorTok{\textless{}\textless{}} \StringTok{"hello harsh"} \OperatorTok{\textless{}\textless{}}\BuiltInTok{std::}\NormalTok{endl}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{images/logo.png}
+\caption{alt text or image title}
+\end{figure}
+
+\hypertarget{a-caucus-race-and-a-long-tale}{%
+\chapter{A caucus-race and a long tale}\label{a-caucus-race-and-a-long-tale}}
+
+\hypertarget{trees}{%
+\chapter{Trees}\label{trees}}
+
+You're either a botanist or computer scientist if you can talk about trees beyond the \#savethetrees kind of narrative. Unlike trees in real life, Trees in computer science have a root node at the ``top''. So far we've talked about \textbf{linear} data structures. Linear data structures are ordered, meaning that there is a sequence with which our data is ordered and traversed. Trees are a \textbf{non-linear} data structure, meaning that the data isn't organized in a sequential manner. This means that you can visit all the elements on a tree in many different ways based on what type of problem you are trying to solve. For problems where we want to optimize for a certain outcome and don't care about order as much, trees are perfect.
+
+If we take a very high level look at what trees and lists are composed of, it's just nodes and pointers, however, the difference with trees that they are \textbf{hierarchical} meaning that there is a top down organization.
+Trees are a hierarchical data structure with a certain set of properties that distinguish it from graphs. Trees are rooted, which means that there is a pointer to the root node and each child node can be reached via the root.
+
+\hypertarget{basic-tree-terminology}{%
+\section{Basic tree terminology}\label{basic-tree-terminology}}
+
+(adapted from CS 173)
+* Vertex: ``nodes''
+
+\begin{itemize}
+\item
+  Path: sequence of edges
+\item
+  Parents: Node \textbf{b, d, x} have Node \textbf{a} as their parent
+\item
+  Children: \textbf{b, d, x,} are the children of \textbf{a}
+\item
+  Siblings: \textbf{b, d, x,} are siblings of each other
+\item
+  Ancestors: \textbf{u} has ancestors \textbf{l, d, a}
+\item
+  Descendants: \textbf{x} has \textbf{s, m} as its descendants
+\item
+  Leaves: Vertices with no children
+\end{itemize}
+
+\hypertarget{tree-property-height}{%
+\section{Tree Property: Height}\label{tree-property-height}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Computation of the tree height}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The length of the longest path from the root to the leaf (count edges).
+  \item
+    If we want to compute recursively:
+  \end{itemize}
+
+  height(T) = 1 + max(height(TL), height(TR)), where if height(null) = -1, which might be counter-intuitive but it follows the mathematical definition of tree height
+\end{itemize}
+
+\hypertarget{tree-property-binary}{%
+\section{Tree Property: Binary}\label{tree-property-binary}}
+
+\begin{itemize}
+\tightlist
+\item
+  A binary tree is either
+
+  \begin{itemize}
+  \tightlist
+  \item
+    T = \{TL, TR, r\}, where TL, TR are binary trees
+  \item
+    T = \{\} = ~\(\emptyset\)
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{tree-property-full}{%
+\section{Tree Property: Full}\label{tree-property-full}}
+
+\begin{itemize}
+\tightlist
+\item
+  A binary tree is full \emph{if and only if}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Either: F = \{\}
+  \item
+    Or: F = \{TL, TR, r\} where TL, TR both have either 0 or 2 children
+  \end{itemize}
+\item
+  \textbf{Theorem}: A binary tree with n data items has n+1 null pointers.
+\end{itemize}
+
+\hypertarget{tree-property-perfect}{%
+\section{Tree Property: Perfect}\label{tree-property-perfect}}
+
+\begin{itemize}
+\tightlist
+\item
+  A perfect tree Ph is defined by its height
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Ph is a tree of height \textbf{h}, with
+
+    \begin{itemize}
+    \tightlist
+    \item
+      P-1 = \{\}
+    \item
+      Ph = \{r, Ph-1, Ph-1\} when h\textgreater=0
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{tree-property-complete}{%
+\section{Tree Property: Complete}\label{tree-property-complete}}
+
+(as defined in data structures)
+* A complete tree is
+* A perfect tree except for the last level
+
+\begin{itemize}
+\item
+  All leaves must be pushed to the \textbf{left}
+\item
+  Or, recursively, a complete tree \textbf{Ch} of height \textbf{h} is
+
+  \begin{itemize}
+  \item
+    C-1 = \{\}
+  \item
+    Ch = \{r, TL, TR\} where
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Either: TL = Ch-1 and TR = Ph-2
+      Or:TL = Ph-1 and TR = Ch-1
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  Full does not imply perfect, so as complete does not imply perfect
+\item
+  Not full implies not perfect, thus perfect implies full; perfect also implies complete too.
+\end{itemize}
+
+\hypertarget{tree-traversals}{%
+\section{Tree Traversals}\label{tree-traversals}}
+
+(practice them here: \url{https://yongdanielliang.github.io/animation/web/BST.html})
+* Pre-Order: process the data first, then left child, then the right child
+* In-Order: left child, process the data, right child
+* Post-Order: left child, right child, process the data last
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ BinaryTree}\OperatorTok{\textless{}}\NormalTok{T}\OperatorTok{\textgreater{}::}\NormalTok{preOrder}\OperatorTok{(}\NormalTok{TreeNode }\OperatorTok{*}\NormalTok{ cur}\OperatorTok{)} \OperatorTok{\{}
+    \ControlFlowTok{if} \OperatorTok{(}\NormalTok{cur }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        func}\OperatorTok{(}\NormalTok{curr}\OperatorTok{{-}\textgreater{}}\NormalTok{data}\OperatorTok{);}
+\NormalTok{        preOrder}\OperatorTok{(}\NormalTok{curr}\OperatorTok{{-}\textgreater{}}\NormalTok{left}\OperatorTok{);}
+\NormalTok{        preOrder}\OperatorTok{(}\NormalTok{curr}\OperatorTok{{-}\textgreater{}}\NormalTok{right}\OperatorTok{);}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+
+\DataTypeTok{void}\NormalTok{ BinaryTree}\OperatorTok{\textless{}}\NormalTok{T}\OperatorTok{\textgreater{}::}\NormalTok{inOrder}\OperatorTok{(}\NormalTok{TreeNode }\OperatorTok{*}\NormalTok{ cur}\OperatorTok{)} \OperatorTok{\{}
+    \ControlFlowTok{if} \OperatorTok{(}\NormalTok{cur }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        preOrder}\OperatorTok{(}\NormalTok{curr}\OperatorTok{{-}\textgreater{}}\NormalTok{left}\OperatorTok{);}
+\NormalTok{        func}\OperatorTok{(}\NormalTok{curr}\OperatorTok{{-}\textgreater{}}\NormalTok{data}\OperatorTok{);}
+\NormalTok{        preOrder}\OperatorTok{(}\NormalTok{curr}\OperatorTok{{-}\textgreater{}}\NormalTok{right}\OperatorTok{);}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+
+\DataTypeTok{void}\NormalTok{ BinaryTree}\OperatorTok{\textless{}}\NormalTok{T}\OperatorTok{\textgreater{}::}\NormalTok{inOrder}\OperatorTok{(}\NormalTok{TreeNode }\OperatorTok{*}\NormalTok{ cur}\OperatorTok{)} \OperatorTok{\{}
+    \ControlFlowTok{if} \OperatorTok{(}\NormalTok{cur }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        preOrder}\OperatorTok{(}\NormalTok{curr}\OperatorTok{{-}\textgreater{}}\NormalTok{left}\OperatorTok{);}
+\NormalTok{        preOrder}\OperatorTok{(}\NormalTok{curr}\OperatorTok{{-}\textgreater{}}\NormalTok{right}\OperatorTok{);}
+\NormalTok{        func}\OperatorTok{(}\NormalTok{curr}\OperatorTok{{-}\textgreater{}}\NormalTok{data}\OperatorTok{);}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{searching-trees}{%
+\section{Searching Trees}\label{searching-trees}}
+
+\begin{itemize}
+\item
+  BFS: breadth first search: visits nodes at each level (level-order traversal): use a queue
+\item
+  DFS: depth first search: find the endpoint of the path quickly (in order, pre order or post order): use a stack
+\item
+  Traversal vs Search: traverse visits every node vs search visits nodes until you find what you want
+\end{itemize}
+
+\hypertarget{delete-and-insert}{%
+\section{Delete and Insert}\label{delete-and-insert}}
+
+\end{document}
