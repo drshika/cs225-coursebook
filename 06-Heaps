@@ -1,11 +1,10 @@
 ---
-title: "Heaps"
-category: "Data Structures"
+title: Trees
+category: Data Structures
 description:
-  "A heapful of data which is quick  to insert to and gives the most important item quickly."
+  A heapful of data which is quick  to insert to and gives the most important item quickly.
    
-authors: "Harsh Deep, Eddie Huang"
-output: html_document
+authors: Harsh Deep, Eddie Huang
 ---
 <!-- markdownlint-disable MD004 MD009 MD014 MD024 MD040 -->
 

@@ -1,9 +1,0 @@
----
-title: "Disjoint Sets"
-category: "Data Structures"
-description: ""
-authors: ""
-output: html_document
----
-# Disjoint Sets
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit

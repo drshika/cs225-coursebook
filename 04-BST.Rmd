@@ -1,9 +1,0 @@
----
-title: "Binary Search Trees"
-category: "Data Structures"
-description: ""
-authors: ""
-output: html_document
----
-# Binary Search Trees
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit

@@ -1,9 +1,1 @@
----
-title: "Graphs"
-category: "Data Structures"
-description: ""
-authors: ""
-output: html_document
----
 # Graphs
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit

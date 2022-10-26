@@ -1,8 +1,0 @@
----
-title: "B Trees"
-category: "Data Structures"
-description: ""
-authors: ""
-output: html_document
----
-# B Trees
