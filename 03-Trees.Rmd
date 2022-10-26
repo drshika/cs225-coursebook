@@ -1,9 +1,10 @@
 ---
-title: Trees
-category: Data Structures
+title: "Trees"
+category: "Data Structures"
 description:
-    A two-child tree that can be searched by moving left or right.
-authors: Tamara Nelson-Fromm, Wenjie Zhu, Nathan Walters, Drshika Asher
+    "A two-child tree that can be searched by moving left or right."
+authors: "Tamara Nelson-Fromm, Wenjie Zhu, Nathan Walters, Drshika Asher"
+output: html_document
 ---
 
 # Trees

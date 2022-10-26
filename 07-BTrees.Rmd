@@ -1,13 +1,8 @@
 ---
-title: "C++ Review"
+title: "B Trees"
 category: "Data Structures"
 description: ""
 authors: ""
 output: html_document
 ---
-# C++ Review
-
-```cpp
-std::cout<< "hello harsh" <<std::endl;
-```
-
+# B Trees

@@ -16,4 +16,3 @@ output:
 ---
 
 # Data Structures in C++
-

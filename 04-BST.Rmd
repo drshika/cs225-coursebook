@@ -1,9 +1,9 @@
 ---
-title: "Graphs"
+title: "Binary Search Trees"
 category: "Data Structures"
 description: ""
 authors: ""
 output: html_document
 ---
-# Graphs
+# Binary Search Trees
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit

@@ -1,13 +1,8 @@
 ---
-title: "C++ Review"
+title: "Graph Algorithms"
 category: "Data Structures"
 description: ""
 authors: ""
 output: html_document
 ---
-# C++ Review
-
-```cpp
-std::cout<< "hello harsh" <<std::endl;
-```
-
+# Graph Algorithms

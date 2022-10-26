@@ -1,9 +1,9 @@
 ---
-title: "Graphs"
+title: "Disjoint Sets"
 category: "Data Structures"
 description: ""
 authors: ""
 output: html_document
 ---
-# Graphs
+# Disjoint Sets
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit

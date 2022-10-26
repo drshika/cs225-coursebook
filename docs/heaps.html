@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Graph Algorithms</title>
+  <title>Chapter 8 Heaps | Graph Algorithms</title>
   <meta name="description" content="stuff" />
   <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Graph Algorithms" />
+  <meta property="og:title" content="Chapter 8 Heaps | Graph Algorithms" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="stuff" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Graph Algorithms" />
+  <meta name="twitter:title" content="Chapter 8 Heaps | Graph Algorithms" />
   
   <meta name="twitter:description" content="stuff" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="c-review.html"/>
+<link rel="prev" href="graphs.html"/>
+<link rel="next" href="disjoint-sets.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -200,22 +200,115 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Graph Algorithms</h1>
-<p class="author"><em>CS 225 Course Staff</em></p>
-<p class="date"><em>2022-10-26</em></p>
+<div id="heaps" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Heaps<a href="heaps.html#heaps" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="figure">
+<img src="images/heaps/heap.png" alt="" />
+<p class="caption">Heaps - Add elements quickly and query/remove the most important element quickly</p>
 </div>
-<div id="data-structures-in-c" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Data Structures in C++<a href="index.html#data-structures-in-c" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<!-- 
+1. https://docs.google.com/document/d/1PKsR5jucFukB__jwzIakv8upM_Et_AI8sKA32TQYoIw/edit
+2. Lecture1: https://courses.engr.illinois.edu/cs225/sp2021/assets/lectures/slides/cs225sp21-24-Heaps-slides.pdf
+3. Lecture2: https://courses.engr.illinois.edu/cs225/sp2021/assets/lectures/slides/cs225sp21-25-HeapOps-slides.pdf
+4. Handout1: https://courses.engr.illinois.edu/cs225/sp2021/assets/lectures/handouts/cs225sp21-24-Heaps-handout.pdf
+5. Handout2: https://courses.engr.illinois.edu/cs225/sp2021/assets/lectures/handouts/cs225sp21-25-HeapOps-handout.pdf
+6. OG notes: https://courses.engr.illinois.edu/cs225/sp2021/resources/heaps/
+-->
+<div id="uses" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Uses<a href="heaps.html#uses" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>getting the smallest/largest item each time in succession</p></li>
+<li><p>maintaining top or bottom k elements, getting the median of large datasets</p></li>
+<li><p>sorting data via heap sort</p></li>
+</ul>
+<div id="pre-reqs-of-the-data" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Pre reqs of the data<a href="heaps.html#pre-reqs-of-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Has to be orderable</p></li>
+<li><p>Has to have <code>&gt;</code> implemented</p></li>
+</ul>
+</div>
+<div id="adt-implementation-functions" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> ADT implementation functions<a href="heaps.html#adt-implementation-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>insert</li>
+<li>remove</li>
+<li>isEmpty</li>
+</ul>
+</div>
+</div>
+<div id="min-heap-vs-max-heap" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> min heap vs max heap<a href="heaps.html#min-heap-vs-max-heap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>min heap is smallest at top and higher at the bottom</p></li>
+<li><p>max heap is the largest at top and goes smaller at the bottom</p></li>
+<li><p>the logic is basically the same in either case, just inverted - we’ll do min heap here but the similar prinicples apply to max heap quite easily</p></li>
+</ul>
+</div>
+<div id="array-based-implementation" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Array based implementation<a href="heaps.html#array-based-implementation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>the simplest way to do it is with arrays that has each level contiguous</p></li>
+<li><p>it makes swaps and indexing easy</p></li>
+<li><p>not having to deal with pointers as much - we’re used to arrays</p></li>
+</ul>
+<div id="compare-to-other-implementations" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> Compare to other implementations<a href="heaps.html#compare-to-other-implementations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<!-- mostly look at TA notes for this?? -->
+<ul>
+<li>unsorted</li>
+</ul>
+</div>
+</div>
+<div id="insert---heapify-up" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> insert() - Heapify up<a href="heaps.html#insert---heapify-up" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Add a bottom</li>
+</ul>
+</div>
+<div id="heapify-down" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Heapify down<a href="heaps.html#heapify-down" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="build-heap" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Build heap<a href="heaps.html#build-heap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure">
+<img src="images/heaps/build_heap.png" alt="" />
+<p class="caption">To build a Heap in linear time we heapify down from the bottom to the top</p>
+</div>
+<div id="recursive-proof" class="section level3 hasAnchor" number="8.6.1">
+<h3><span class="header-section-number">8.6.1</span> Recursive proof<a href="heaps.html#recursive-proof" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="heap-sort" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> Heap Sort<a href="heaps.html#heap-sort" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="priority-queue" class="section level2 hasAnchor" number="8.8">
+<h2><span class="header-section-number">8.8</span> Priority Queue<a href="heaps.html#priority-queue" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="see-also" class="section level2 hasAnchor" number="8.9">
+<h2><span class="header-section-number">8.9</span> See also:<a href="heaps.html#see-also" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><a href="https://medium.com/basecs/learning-to-love-heaps-cef2b273a238">Learning to Love Heaps</a> Long Medium Post by Vaidehi Joshi</p></li>
+<li><p><a href="https://www.youtube.com/watch?v=c1TpLRyQJ4w">Introduction to a Heap</a> Video Series by Paul Programming</p></li>
+<li><p><a href="https://courses.engr.illinois.edu/cs225/sp2021/resources/heaps/">Old CS 225 resources page</a> by Eddie Huang</p></li>
+</ul>
+<!-- TODO:
+* add heap proofs 
+* new illustrations? 
+* more heap implementations 
+* reference lecture closely 
 
+-->
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="c-review.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="graphs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="disjoint-sets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -246,7 +339,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/drshika/cs225-coursebook/edit/master/index.Rmd",
+"link": "https://github.com/drshika/cs225-coursebook/edit/master/05-Heaps.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -254,7 +347,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/drshika/cs225-coursebook/blob/master/index.Rmd",
+"link": "https://github.com/drshika/cs225-coursebook/blob/master/05-Heaps.Rmd",
 "text": null
 },
 "download": null,

@@ -1,0 +1,10 @@
+---
+title: "Arrays & Lists"
+category: "Data Structures"
+description: ""
+authors: ""
+output: html_document
+---
+# Arrays
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit
+# Lists
