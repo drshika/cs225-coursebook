@@ -116,3 +116,6 @@ void BinaryTree<T>::inOrder(TreeNode * cur) {
 ## Delete and Insert
 <!--stopped here-->
 
+
+
+authors: Tamara Nelson-Fromm, Wenjie Zhu, Nathan Walters, Drshika Asher

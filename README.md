@@ -39,10 +39,15 @@ In the file tree, you can edit the following files (each chapter has a file).
 
 ```
 01-C++_Review.Rmd
-02-Arrays.Rmd
+02-Array-List.Rmd
 03-Trees.Rmd
-04-Hashing.Rmd
-05-Graphs.Rmd
+04-BST.Rmd
+05-Heaps.Rmd
+06-DSets.Rmd
+07-BTrees.Rmd
+08-Hashing.Rmd
+09-Graphs.Rmd
+10-GraphAlgs.Rmd
 ```
 
 The `tex` folder has the LaTeX template that is used to render the PDF. 
